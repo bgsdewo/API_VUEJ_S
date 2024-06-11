@@ -3,3 +3,7 @@ catatan penting jika suatu component mempunyai logicnya sendiri pisahkan dia den
 jadi perbedaan dari beforeOnMount dengan onMounted adalah,ketika bisa memanfaatkan beforeOnMount ini seperti
 jika ada component(data) yg belum muncul kita bisa memanfaatkan ini memakai efek loding, sedangkan untuk onMounted ini
 jika sudah ada component(datanya) maka bisa ditampilkan isi datanya ini
+
+dalam menggunaankan lifecyle itu akan berfungsi pada component itu saja bukan pada anakannya(childnya)
+penggunaan  Onbeforeupdate:itu untuk proses sebelum ada perubahan/atau sedang melakukan perubahan tp belum muncul
+Dan Onupdated adalah ketika perubahan itu sudah muncul
