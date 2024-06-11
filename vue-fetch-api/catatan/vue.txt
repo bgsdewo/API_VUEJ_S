@@ -1,1 +1,5 @@
 catatan penting jika suatu component mempunyai logicnya sendiri pisahkan dia dengan cara membuat file baru!
+
+jadi perbedaan dari beforeOnMount dengan onMounted adalah,ketika bisa memanfaatkan beforeOnMount ini seperti
+jika ada component(data) yg belum muncul kita bisa memanfaatkan ini memakai efek loding, sedangkan untuk onMounted ini
+jika sudah ada component(datanya) maka bisa ditampilkan isi datanya ini
