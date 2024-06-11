@@ -1,0 +1,1 @@
+catatan penting jika suatu component mempunyai logicnya sendiri pisahkan dia dengan cara membuat file baru!
