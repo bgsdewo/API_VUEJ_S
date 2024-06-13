@@ -1,27 +1,45 @@
 <script setup>
-import { ref, defineEmits} from 'vue';
+import { ref, defineEmits, watchEffect, computed } from 'vue';
 
+const props = defineProps({
+	product: Object,
+});
 
-
-const title = ref('');
+const title = ref(props.product?.title || '');
 const description = ref('');
 const price = ref('');
 const image = ref('');
 const id = ref('');
 
 
-const emit = defineEmits(['create-product'])
+watchEffect(() => {
+	title.value = props.product?.title;
+	description.value = props.product?.description;
+	price.value = props.product?.price;
+	image.value = props.product?.image;
+	id.value = props.product?.id;
+});
+
 const showForm = ref(false);
+const isUpdate = computed(() => !!props.product);
+
+const emit = defineEmits(['create-product','update-product'])
 
 function saveProduct() {
 	const formData = {
 		title: title.value,
 		description: description.value,
 		price: price.value,
-		image: image.value
+		image: image.value,
+	};
+	if (isUpdate.value) {
+		emit('update-product', formData);
+	} else {
+		emit('create-product', formData);
 	}
-	emit('create-product',formData)
 }
+
+
 </script>
 
 <template>
