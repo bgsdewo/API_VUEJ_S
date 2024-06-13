@@ -3,14 +3,29 @@ import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
 
 import { ref } from 'vue';
+import axios from 'axios'
+
+const products = ref([])
 
 
+//memanfaatkan suspent compnents
+products.value = await axios
+.get('http://localhost:3000/products')
+.then((res) => res.data)
+console.log(products.value)
 
 
+// async function getProducts() {
+// 	const response = await axios.get('http://localhost:3000/products')
+// 	products.value = response.data
+// 	console.log(response.data)
+// }
+// getProducts()
 </script>
 
 <template>
 	<main>
+		{{ products }}
 		<div class="product-grid">
       <ProductCard />
 		</div>
