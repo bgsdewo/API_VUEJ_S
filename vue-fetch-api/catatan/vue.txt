@@ -11,3 +11,10 @@ Dan Onupdated adalah ketika perubahan itu sudah muncul
 
 npx json-server src/data/rest.json ->untuk menjalankan server data json yg sudah kita buat menggunaankan
 json-server library
+
+
+dalam template terdapat dua default yaitu
+#default ->itu berisi kontent yg akan ditampilkan atau yg akan dimuat 
+#fallback ->itu berisi sebelum template dari #default muncul maka template #fallback ini akan muncul dluan
+
+dan ini bisa kita gunakan jika kita memakai component berbasis asyncronus
