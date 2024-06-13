@@ -370,6 +370,13 @@
       "description": "Data baru.",
       "price": 9.99,
       "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "0cbd",
+      "title": "Apple ",
+      "description": "Charge your compatible devices effortlessly with this sleek wireless charging pad",
+      "price": 2000000,
+      "image": "https://via.placeholder.com/150\""
     }
   ]
 }

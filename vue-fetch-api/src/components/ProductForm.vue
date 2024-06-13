@@ -1,5 +1,5 @@
 <script setup>
-import { ref} from 'vue';
+import { ref, defineEmits} from 'vue';
 
 
 
@@ -10,9 +10,18 @@ const image = ref('');
 const id = ref('');
 
 
-
+const emit = defineEmits(['create-product'])
 const showForm = ref(false);
 
+function saveProduct() {
+	const formData = {
+		title: title.value,
+		description: description.value,
+		price: price.value,
+		image: image.value
+	}
+	emit('create-product',formData)
+}
 </script>
 
 <template>
