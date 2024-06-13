@@ -7,3 +7,7 @@ jika sudah ada component(datanya) maka bisa ditampilkan isi datanya ini
 dalam menggunaankan lifecyle itu akan berfungsi pada component itu saja bukan pada anakannya(childnya)
 penggunaan  Onbeforeupdate:itu untuk proses sebelum ada perubahan/atau sedang melakukan perubahan tp belum muncul
 Dan Onupdated adalah ketika perubahan itu sudah muncul
+
+
+npx json-server src/data/rest.json ->untuk menjalankan server data json yg sudah kita buat menggunaankan
+json-server library
