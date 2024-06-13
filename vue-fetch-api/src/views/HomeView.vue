@@ -14,18 +14,20 @@ products.value = await axios
 .then((res) => res.data)
 
 watch(page, async () => {
-	products.value= await axios
-	.get(`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`)
-	.then((res) =>res.data)
+	products.value = await axios
+	.get(
+		`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`
+	)
+	.then((res) => res.data)
 })
+console.log(products.value)
 
+function changePage(newPage) {
+	if (newPage < 1	) return
+	if (newPage > products.value.pages)return
+	page.value = newPage
+}
 
-// async function getProducts() {
-// 	const response = await axios.get('http://localhost:3000/products')
-// 	products.value = response.data
-// 	console.log(response.data)
-// }
-// getProducts()
 </script>
 
 <template>
@@ -34,7 +36,7 @@ watch(page, async () => {
       <ProductCard v-for="(product,index) in products.data" :key="index" :product="product" />
 		</div>
 		<div class="pagination">
-	<Pagination />
+	<Pagination :page="page" :totalPages="products.pages" @change-page="changePage" />
 		</div>
 	</main>
 </template>

@@ -10,7 +10,7 @@ const { product } = defineProps({
         <img :src="product.image" :alt="product.title" class="product-image" />
     <h2 class="product-title">{{ product.title }}</h2>
 <p class="product-description">{{ product.description }}</p>
-<span class="product-price">Rp {{ product.price }}</span>
+<span class="product-price">Rp {{ product.price	 }}</span>
 </div>
         </template>
 
