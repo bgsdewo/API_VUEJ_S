@@ -2,25 +2,26 @@
 import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
 
-import { ref,watch } from 'vue';
+import { onMounted,ref,watch } from 'vue';
 import axios from 'axios'
 
 const products = ref([])
 const page = ref(1)
 const limit = ref(8)
-//memanfaatkan suspent compnents
-products.value = await axios
-.get(`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`)
-.then((res) => res.data)
+const apiUrl = `http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`
+onMounted(async () => {
+	products.value = await axios
+	.get(apiUrl)
+	.then((res) => res.data)
+})
+
 
 watch(page, async () => {
 	products.value = await axios
-	.get(
-		`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`
-	)
+	.get(apiUrl)
 	.then((res) => res.data)
 })
-console.log(products.value)
+
 
 function changePage(newPage) {
 	if (newPage < 1	) return
