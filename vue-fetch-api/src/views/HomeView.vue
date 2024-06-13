@@ -1,6 +1,7 @@
 <script setup>
 import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
+import Loading from '@/components/Loading.vue'
 
 import { onMounted,ref,watch } from 'vue';
 import axios from 'axios'
@@ -9,18 +10,31 @@ const products = ref([])
 const page = ref(1)
 const limit = ref(8)
 const apiUrl = `http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`
+const isLoading = ref(true)
+
+
 onMounted(async () => {
-	products.value = await axios
-	.get(apiUrl)
-	.then((res) => res.data)
+	try {
+		products.value = await axios.get(apiUrl).then((res) => res.data)
+	} catch(error) {
+		console.log(error)
+	} finally {
+		isLoading.value = false
+	}
 })
 
 
 watch(page, async () => {
-	products.value = await axios
-	.get(apiUrl)
-	.then((res) => res.data)
+	try {
+		isLoading.value = true
+		products.value = await axios.get(apiUrl).then((res) => res.data)
+	} catch(error) {
+		console.log(error)
+	} finally {
+		isLoading.value = false
+	}
 })
+
 
 
 function changePage(newPage) {
@@ -32,7 +46,11 @@ function changePage(newPage) {
 </script>
 
 <template>
-	<main>
+	<div>
+	  <div v-if="isLoading">
+		<Loading />
+	  </div>
+	<main v-else>
 		<div class="product-grid">
       <ProductCard v-for="(product,index) in products.data" :key="index" :product="product" />
 		</div>
@@ -40,6 +58,7 @@ function changePage(newPage) {
 	<Pagination :page="page" :totalPages="products.pages" @change-page="changePage" />
 		</div>
 	</main>
+</div>
 </template>
 
 <style scoped>
