@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "title": "Electric Standing Desk ",
-      "description": "Create a comfortable and ergonomic workspace with this adjustable electric standing desk.",
-      "price": 449,
-      "image": "https://via.placeholder.com/150",
-      "id": "9"
-    },
-    {
       "id": "10",
       "title": "Smart Home Security System",
       "description": "Protect your home with this smart security system featuring cameras and sensors.",
