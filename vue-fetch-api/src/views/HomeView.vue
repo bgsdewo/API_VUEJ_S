@@ -25,9 +25,8 @@ console.log(products.value)
 
 <template>
 	<main>
-		{{ products }}
 		<div class="product-grid">
-      <ProductCard />
+      <ProductCard v-for="(product,index) in products" :key="index" :product="product" />
 		</div>
 		<div class="pagination">
 	<Pagination />
